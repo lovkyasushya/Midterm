@@ -29,3 +29,18 @@ def test_menu_command(capfd, monkeypatch):
     command.execute([])
     captured = capfd.readouterr()
     assert captured.out.strip() == "Menu"
+
+def test_command_handler_register_command():
+    """Test registering command in command handler."""
+    handler = CommandHandler()
+    mock_command = MockCommand()
+    handler.register_command('mock', mock_command)
+    assert handler.commands['mock'] == mock_command
+
+def test_command_handler_execute_command():
+    """Test executing command in command handler."""
+    handler = CommandHandler()
+    mock_command = MagicMock()
+    handler.register_command('mock', mock_command)
+    handler.execute_command('mock')
+    mock_command.execute.assert_called_once()
