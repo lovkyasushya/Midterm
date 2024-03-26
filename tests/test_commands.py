@@ -117,3 +117,17 @@ def test_app_subtraction_command(capfd, monkeypatch):
     app = App()
     with pytest.raises(SystemExit):
         app.start()
+
+def test_subtraction_command_no_args(capfd):
+    """Test that subtraction command handles no arguments."""
+    command = SubtractionCommand()
+    command.execute([])
+    captured = capfd.readouterr()
+    assert captured.out.strip() == "nothing to subtract"
+
+def test_subtraction_command_with_args(capfd):
+    """Test that subtraction command handles arguments."""
+    command = SubtractionCommand()
+    command.execute(["5", "3"])
+    captured = capfd.readouterr()
+    assert captured.out.strip() == "Subtraction result : 2.0"
