@@ -102,3 +102,18 @@ def test_multiplication_command_no_args(capfd):
     command.execute([])
     captured = capfd.readouterr()
     assert captured.out.strip() == "nothing to multiply"
+
+def test_multiplication_command_with_args(capfd):
+    """Test that multiplication command handles arguments."""
+    command = MultiplicationCommand()
+    command.execute(["2", "3"])
+    captured = capfd.readouterr()
+    assert captured.out.strip() == "multiplication result : 6.0"
+
+def test_app_subtraction_command(capfd, monkeypatch):
+    """Test that the REPL correctly handles the 'subtract' command."""
+    inputs = iter(['subtract 5 3', 'exit'])
+    monkeypatch.setattr('builtins.input', lambda _: next(inputs))
+    app = App()
+    with pytest.raises(SystemExit):
+        app.start()
