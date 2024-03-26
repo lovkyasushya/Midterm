@@ -59,3 +59,17 @@ def test_addition_command_no_args(capfd):
     command.execute([])
     captured = capfd.readouterr()
     assert captured.out.strip() == "nothing to add"
+
+def test_addition_command_with_args(capfd):
+    """Test that addition command handles arguments."""
+    command = AdditionCommand()
+    command.execute(["2", "3"])
+    captured = capfd.readouterr()
+    assert captured.out.strip() == "5.0"
+
+def test_division_command_no_args(capfd):
+    """Test that division command handles no arguments."""
+    command = DivisionCommand()
+    command.execute([])
+    captured = capfd.readouterr()
+    assert captured.out.strip() == "nothing to Divide"
