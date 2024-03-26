@@ -73,3 +73,17 @@ def test_division_command_no_args(capfd):
     command.execute([])
     captured = capfd.readouterr()
     assert captured.out.strip() == "nothing to Divide"
+
+def test_division_command_division_by_zero(capfd):
+    """Test that division command handles division by zero."""
+    command = DivisionCommand()
+    command.execute(["5", "0"])
+    captured = capfd.readouterr()
+    assert captured.out.strip() == "division by zero error"
+
+def test_division_command_with_args(capfd):
+    """Test that division command handles arguments."""
+    command = DivisionCommand()
+    command.execute(["10", "2"])
+    captured = capfd.readouterr()
+    assert captured.out.strip() == "Division result : 5.0"
