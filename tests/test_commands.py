@@ -44,3 +44,18 @@ def test_command_handler_execute_command():
     handler.register_command('mock', mock_command)
     handler.execute_command('mock')
     mock_command.execute.assert_called_once()
+
+def test_command_handler_execute_command_no_args():
+    """Test executing command in command handler with no args."""
+    handler = CommandHandler()
+    mock_command = MagicMock()
+    handler.register_command('mock', mock_command)
+    handler.execute_command('mock')
+    mock_command.execute.assert_called_once()
+
+def test_addition_command_no_args(capfd):
+    """Test that addition command handles no arguments."""
+    command = AdditionCommand()
+    command.execute([])
+    captured = capfd.readouterr()
+    assert captured.out.strip() == "nothing to add"
