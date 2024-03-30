@@ -8,7 +8,7 @@ from app.plugins.multiplication import MultiplicationCommand
 from app.plugins.division import DivisionCommand
 from app.commands import Command
 from app.plugins.calculation_history import claculation_history
-from app.plugins.Menu import MenuCommand
+from app.plugins.menu import MenuCommand
 
 
 class TestAdditionCommand(unittest.TestCase):
