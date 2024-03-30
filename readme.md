@@ -57,9 +57,8 @@ https://github.com/lovkyasushya/Midterm/blob/main/app/plugins/division/__init__.
 
 
 
-**video explaining the features of the calculator app**
+**Video explaining the features of the calculator app**
 
+https://drive.google.com/file/d/1o3GKMTRQj_s46jEqwAMxzlEvokxfWoQI/view?usp=sharing
 
-
-Click on the video link to see the video.
 
