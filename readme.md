@@ -53,3 +53,13 @@ The application utilizes try/except blocks and exception handling to handle pote
 
 https://github.com/lovkyasushya/Midterm/blob/main/app/plugins/division/__init__.py
 
+
+
+
+
+**video explaining the features of the calculator app**
+
+
+
+Click on the video link to see the video.
+
