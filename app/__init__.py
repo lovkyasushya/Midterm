@@ -5,7 +5,7 @@ import sys
 import logging
 from abc import ABC, abstractmethod
 from dotenv import load_dotenv
-from app.plugins.menu import MenuCommand
+from app.plugins.Menu import MenuCommand
 import warnings
 from app.plugins.claculation_history import claculation_history
 
