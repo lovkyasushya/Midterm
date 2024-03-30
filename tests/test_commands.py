@@ -23,9 +23,7 @@ class TestAdditionCommand(unittest.TestCase):
         command = AdditionCommand()
         result = command.execute([])
         self.assertIsNone(result)
-        # You can also check if the expected message is printed
-        # by capturing stdout using `unittest.mock.patch`
-
+       
 class TestSubtractionCommand(unittest.TestCase):
     def test_execute_with_args(self):
         """Test execute method with arguments."""
@@ -38,9 +36,7 @@ class TestSubtractionCommand(unittest.TestCase):
         command = SubtractionCommand()
         result = command.execute([])
         self.assertIsNone(result)
-        # You can also check if the expected message is printed
-        # by capturing stdout using `unittest.mock.patch`
-
+        
 
 class TestMultiplicationCommand(unittest.TestCase):
     def test_execute_with_args(self):
@@ -54,9 +50,7 @@ class TestMultiplicationCommand(unittest.TestCase):
         command = MultiplicationCommand()
         result = command.execute([])
         self.assertIsNone(result)
-        # You can also check if the expected message is printed
-        # by capturing stdout using `unittest.mock.patch`
-
+       
 
 class TestDivisionCommand(unittest.TestCase):
     def test_execute_with_args(self):
@@ -70,17 +64,13 @@ class TestDivisionCommand(unittest.TestCase):
         command = DivisionCommand()
         result = command.execute(["5", "0"])
         self.assertIsNone(result)
-        # You can also check if the expected message is printed
-        # by capturing stdout using `unittest.mock.patch`
-
+    
     def test_execute_no_args(self):
         """Test execute method with no arguments."""
         command = DivisionCommand()
         result = command.execute([])
         self.assertIsNone(result)
-        # You can also check if the expected message is printed
-        # by capturing stdout using `unittest.mock.patch`
-
+       
 
 
 class TestClaculationHistory(unittest.TestCase):
