@@ -7,7 +7,7 @@ from abc import ABC, abstractmethod
 from dotenv import load_dotenv
 from app.plugins.Menu import MenuCommand
 import warnings
-from app.plugins.claculation_history import claculation_history
+from app.plugins.calculation_history  import calculation_history 
 
 warnings.filterwarnings("ignore", category=FutureWarning)
 warnings.resetwarnings()
@@ -83,7 +83,7 @@ class App:
             self.settings[key] = value
         self.settings.setdefault('ENVIRONMENT', 'TESTING')
         self.command_handler = CommandHandler()
-        self.history_manager = claculation_history()
+        self.history_manager = calculation_history ()
 
     def getEnvironmentVariable(self, envvar: str = 'ENVIRONMENT'):
         return self.settings[envvar]
@@ -96,10 +96,10 @@ class App:
     def start(self):
         self.load_plugins()
         logger.info("Application started.")
-        print("Type 'exit' to exit.")
+        print("Type 'Menu to get Menu.")
         while True:
             user_input = input(">>> ").strip()
-            if user_input.lower() == 'menu':
+            if user_input.lower() == 'Menu':
                 logger.info("Menu command executed.")
                 MenuCommand(self.history_manager).execute([])  # Pass history_manager to MenuCommand
             else:
