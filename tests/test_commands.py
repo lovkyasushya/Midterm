@@ -7,7 +7,7 @@ from app.plugins.subtraction import SubtractionCommand
 from app.plugins.multiplication import MultiplicationCommand
 from app.plugins.division import DivisionCommand
 from app.commands import Command
-from app.plugins.calculation_history import claculation_history
+from app.plugins.calculation_history import calculation_history
 from app.plugins.Menu import MenuCommand
 
 
@@ -85,7 +85,7 @@ class TestDivisionCommand(unittest.TestCase):
 
 class TestClaculationHistory(unittest.TestCase):
     def setUp(self):
-        self.history = claculation_history()
+        self.history = calculation_history()
 
     def test_add_entry(self):
         self.history.add_entry('Addition', 2, 3, 5)
@@ -117,7 +117,7 @@ class TestClaculationHistory(unittest.TestCase):
 
 class TestMenuCommand(unittest.TestCase):
     def setUp(self):
-        self.history_manager = claculation_history()
+        self.history_manager = calculation_history()
 
     def test_Menu_command_addition(self):
         with patch('builtins.input', side_effect=['1', '2', '3', 'exit']):
@@ -155,14 +155,14 @@ class TestMenuCommand(unittest.TestCase):
                 Menu_command.execute([])
                 self.assertIn("Addition", mock_stdout.getvalue())
 
-    @patch('app.plugins.claculation_history.claculation_history.save_history')
+    @patch('app.plugins.calculation_history.calculation_history.save_history')
     def test_Menu_command_save_history(self, mock_save_history):
         with patch('builtins.input', side_effect=['6', 'test_history.csv', 'exit']):
             Menu_command = MenuCommand(self.history_manager)
             Menu_command.execute([])
             mock_save_history.assert_called_with('test_history.csv')
 
-    @patch('app.plugins.claculation_history.claculation_history.clear_history')
+    @patch('app.plugins.calculation_history.calculation_history.clear_history')
     def test_Menu_command_clear_history(self, mock_clear_history):
         with patch('builtins.input', side_effect=['7', 'y', 'exit']):
             self.history_manager.add_entry('Addition', 2, 3, 5)
@@ -170,7 +170,7 @@ class TestMenuCommand(unittest.TestCase):
             Menu_command.execute([])
             mock_clear_history.assert_called()
 
-    @patch('app.plugins.claculation_history.claculation_history.delete_entry')
+    @patch('app.plugins.calculation_history.calculation_history.delete_entry')
     def test_Menu_command_delete_entry(self, mock_delete_entry):
         with patch('builtins.input', side_effect=['8', '0', 'exit']):
             self.history_manager.add_entry('Addition', 2, 3, 5)
