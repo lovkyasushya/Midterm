@@ -5,7 +5,7 @@ import sys
 import logging
 from abc import ABC, abstractmethod
 from dotenv import load_dotenv
-from app.plugins.menu import MenuCommand
+from app.plugins.Menu import MenuCommand
 import warnings
 from app.plugins.calculation_history import claculation_history
 
@@ -96,10 +96,10 @@ class App:
     def start(self):
         self.load_plugins()
         logger.info("Application started.")
-        print("Type 'menu to get menu.")
+        print("Type 'Menu to get Menu.")
         while True:
             user_input = input(">>> ").strip()
-            if user_input.lower() == 'menu':
+            if user_input.lower() == 'Menu':
                 logger.info("Menu command executed.")
                 MenuCommand(self.history_manager).execute([])  # Pass history_manager to MenuCommand
             else:
