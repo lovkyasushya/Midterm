@@ -1,12 +1,15 @@
 import pandas as pd
 
-class calculation_history:
+class calculation_history :
     def __init__(self):
         self.history = pd.DataFrame()
 
     def add_entry(self, operation, num1, num2, result):
         new_entry = pd.DataFrame({'Operation': [operation], 'Number1': [num1], 'Number2': [num2], 'Result': [result]})
-        self.history = pd.concat([self.history, new_entry], ignore_index=True)
+        if self.history.empty:
+            self.history = new_entry
+        else:
+            self.history = pd.concat([self.history, new_entry], ignore_index=True)
 
     def display_history(self):
         print(self.history)
@@ -18,7 +21,7 @@ class calculation_history:
         print(f"History saved to {filename}.")
 
     def clear_history(self):
-        self.history = pd.DataFrame(columns=['Operation', 'Number1', 'Number2', 'Result'])
+        self.history = pd.DataFrame(columns=['Operation', 'Operand1', 'Operand2', 'Result'])
         print("History cleared.")
 
     def delete_entry(self, index):
