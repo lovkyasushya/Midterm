@@ -119,70 +119,70 @@ class TestMenuCommand(unittest.TestCase):
     def setUp(self):
         self.history_manager = claculation_history()
 
-    def test_menu_command_addition(self):
+    def test_Menu_command_addition(self):
         with patch('builtins.input', side_effect=['1', '2', '3', 'exit']):
             with patch('sys.stdout', new=StringIO()) as mock_stdout:
-                menu_command = MenuCommand(self.history_manager)
-                menu_command.execute([])
+                Menu_command = MenuCommand(self.history_manager)
+                Menu_command.execute([])
                 self.assertIn("result of addition is", mock_stdout.getvalue())
 
-    def test_menu_command_subtraction(self):
+    def test_Menu_command_subtraction(self):
         with patch('builtins.input', side_effect=['2', '5', '3', 'exit']):
             with patch('sys.stdout', new=StringIO()) as mock_stdout:
-                menu_command = MenuCommand(self.history_manager)
-                menu_command.execute([])
+                Menu_command = MenuCommand(self.history_manager)
+                Menu_command.execute([])
                 self.assertIn("result of subtraction is", mock_stdout.getvalue())
 
-    def test_menu_command_multiplication(self):
+    def test_Menu_command_multiplication(self):
         with patch('builtins.input', side_effect=['3', '2', '3', 'exit']):
             with patch('sys.stdout', new=StringIO()) as mock_stdout:
-                menu_command = MenuCommand(self.history_manager)
-                menu_command.execute([])
+                Menu_command = MenuCommand(self.history_manager)
+                Menu_command.execute([])
                 self.assertIn("result of multiplication is", mock_stdout.getvalue())
 
-    def test_menu_command_division(self):
+    def test_Menu_command_division(self):
         with patch('builtins.input', side_effect=['4', '6', '3', 'exit']):
             with patch('sys.stdout', new=StringIO()) as mock_stdout:
-                menu_command = MenuCommand(self.history_manager)
-                menu_command.execute([])
+                Menu_command = MenuCommand(self.history_manager)
+                Menu_command.execute([])
                 self.assertIn("result of division is", mock_stdout.getvalue())
 
-    def test_menu_command_display_history(self):
+    def test_Menu_command_display_history(self):
         with patch('builtins.input', side_effect=['5', 'exit']):
             with patch('sys.stdout', new=StringIO()) as mock_stdout:
                 self.history_manager.add_entry('Addition', 2, 3, 5)
-                menu_command = MenuCommand(self.history_manager)
-                menu_command.execute([])
+                Menu_command = MenuCommand(self.history_manager)
+                Menu_command.execute([])
                 self.assertIn("Addition", mock_stdout.getvalue())
 
     @patch('app.plugins.claculation_history.claculation_history.save_history')
-    def test_menu_command_save_history(self, mock_save_history):
+    def test_Menu_command_save_history(self, mock_save_history):
         with patch('builtins.input', side_effect=['6', 'test_history.csv', 'exit']):
-            menu_command = MenuCommand(self.history_manager)
-            menu_command.execute([])
+            Menu_command = MenuCommand(self.history_manager)
+            Menu_command.execute([])
             mock_save_history.assert_called_with('test_history.csv')
 
     @patch('app.plugins.claculation_history.claculation_history.clear_history')
-    def test_menu_command_clear_history(self, mock_clear_history):
+    def test_Menu_command_clear_history(self, mock_clear_history):
         with patch('builtins.input', side_effect=['7', 'y', 'exit']):
             self.history_manager.add_entry('Addition', 2, 3, 5)
-            menu_command = MenuCommand(self.history_manager)
-            menu_command.execute([])
+            Menu_command = MenuCommand(self.history_manager)
+            Menu_command.execute([])
             mock_clear_history.assert_called()
 
     @patch('app.plugins.claculation_history.claculation_history.delete_entry')
-    def test_menu_command_delete_entry(self, mock_delete_entry):
+    def test_Menu_command_delete_entry(self, mock_delete_entry):
         with patch('builtins.input', side_effect=['8', '0', 'exit']):
             self.history_manager.add_entry('Addition', 2, 3, 5)
-            menu_command = MenuCommand(self.history_manager)
-            menu_command.execute([])
+            Menu_command = MenuCommand(self.history_manager)
+            Menu_command.execute([])
             mock_delete_entry.assert_called_with(0)
 
-    def test_menu_command_exit(self):
+    def test_Menu_command_exit(self):
         with patch('builtins.input', side_effect=['9']):
             with self.assertRaises(SystemExit):
-                menu_command = MenuCommand(self.history_manager)
-                menu_command.execute([])
+                Menu_command = MenuCommand(self.history_manager)
+                Menu_command.execute([])
 
 
 if __name__ == "__main__":
