@@ -1,6 +1,6 @@
 import pandas as pd
 
-class CalculationHistory:
+class calculation_history:
     def __init__(self):
         self.history = pd.DataFrame()
 
