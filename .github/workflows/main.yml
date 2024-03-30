@@ -22,14 +22,11 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install flake8 pytest
+          pip install flake8 pytest pytest-pylint pytest-cov
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-      - name: Test with pytest 
-        run: |
-          pytest
+      - name: Test with pytest
+        run: pytest
       - name: Test with pytest --pylint
-        run: |
-          pytest --pylint
+        run: pytest --pylint
       - name: Test with pytest --pylint --cov
-        run: |
-          pytest --pylint --cov
+        run: pytest --pylint --cov
