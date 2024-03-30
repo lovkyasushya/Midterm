@@ -67,4 +67,4 @@ class TestApp(unittest.TestCase):
         "stoped iteration"
 
 if __name__ == '__main__':
-    unittest.main()
+    unittest.main()  
