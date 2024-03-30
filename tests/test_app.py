@@ -57,9 +57,9 @@ class TestApp(unittest.TestCase):
     def test_start_exit_command(self, mock_input):
         "stoped iteration "
 
-    @patch('builtins.input', side_effect=['menu', 'exit'])
-    @patch('app.plugins.menu.MenuCommand')  # Mocking MenuCommand
-    def test_start_menu_command(self, mock_menu_command, mock_input):
+    @patch('builtins.input', side_effect=['Menu', 'exit'])
+    @patch('app.plugins.Menu.MenuCommand')  # Mocking MenuCommand
+    def test_start_Menu_command(self, mock_Menu_command, mock_input):
         "stoped iteration"
 
     @patch('builtins.input', side_effect=['some_command', 'exit'])
